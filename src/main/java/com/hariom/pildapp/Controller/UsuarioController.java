@@ -43,6 +43,6 @@ public class UsuarioController {
     @PostMapping("/agregarUsuario")
     public ResponseEntity<Usuario> agregarUsuario(@RequestBody Usuario usuario){
         Usuario usuarioSaved = usuarioService.agregarUsuario(usuario);
-        return new ResponseEntity<>(usuarioSaved, HttpStatus.CREATED);
+        return new ResponseEntity<Usuario>(usuarioSaved, HttpStatus.CREATED);
     }
 }

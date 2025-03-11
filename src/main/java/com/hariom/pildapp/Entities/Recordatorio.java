@@ -3,105 +3,45 @@ package com.hariom.pildapp.Entities;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
+@AllArgsConstructor
+@Setter
+@Getter
 @Entity
 @Table(name = "recordatorios")
 public class Recordatorio {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_recordatorio", nullable = false)
     private int idRecordatorio;
 
-    private int idCuidador;
+    @ManyToOne
+    @JoinColumn(name = "id_cuidador")
+    private Cuidador cuidador;
+
+    @Column(name = "id_medicamento", nullable = false)
     private int idMedicamento;
+
+    @Column(name = "id_paciente", nullable = false)
     private int idPaciente;
 
+    @Column(name = "estado")
     private boolean estado;
+
+    @Column(name = "nombre_medicamento")
     private String nombreMedicamento;
+
+    @Column(name = "nombre_paciente")
     private String nombrePaciente;
+
+    @Column(name = "fecha_vencimiento")
     private String fechaVencimiento;
+
+    @Column(name = "dosis")
     private String dosis;
+
+    @Column(name = "frecuencia")
     private String frecuencia;
-
-    public int getIdRecordatorio() {
-        return idRecordatorio;
-    }
-
-    public void setIdRecordatorio(int idRecordatorio) {
-        this.idRecordatorio = idRecordatorio;
-    }
-
-    public int getIdCuidador() {
-        return idCuidador;
-    }
-
-    public void setIdCuidador(int idCuidador) {
-        this.idCuidador = idCuidador;
-    }
-
-    public int getIdMedicamento() {
-        return idMedicamento;
-    }
-
-    public void setIdMedicamento(int idMedicamento) {
-        this.idMedicamento = idMedicamento;
-    }
-
-    public int getIdPaciente() {
-        return idPaciente;
-    }
-
-    public void setIdPaciente(int idPaciente) {
-        this.idPaciente = idPaciente;
-    }
-
-    public boolean isEstado() {
-        return estado;
-    }
-
-    public void setEstado(boolean estado) {
-        this.estado = estado;
-    }
-
-    public String getNombreMedicamento() {
-        return nombreMedicamento;
-    }
-
-    public void setNombreMedicamento(String nombreMedicamento) {
-        this.nombreMedicamento = nombreMedicamento;
-    }
-
-    public String getNombrePaciente() {
-        return nombrePaciente;
-    }
-
-    public void setNombrePaciente(String nombrePaciente) {
-        this.nombrePaciente = nombrePaciente;
-    }
-
-    public String getFechaVencimiento() {
-        return fechaVencimiento;
-    }
-
-    public void setFechaVencimiento(String fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
-    }
-
-    public String getDosis() {
-        return dosis;
-    }
-
-    public void setDosis(String dosis) {
-        this.dosis = dosis;
-    }
-
-    public String getFrecuencia() {
-        return frecuencia;
-    }
-
-    public void setFrecuencia(String frecuencia) {
-        this.frecuencia = frecuencia;
-    }
-
-    public Recordatorio() {
-    }
 }
